@@ -221,7 +221,7 @@ public class Bike implements Timed, Drawable {
 
     }
 
-    void die() {
+    void  die() {
         Clock.getInstance().logout(this);
         Tron.getInstance().getBikes().remove(this);
         System.out.println(name + " died");
@@ -230,11 +230,9 @@ public class Bike implements Timed, Drawable {
         if (Tron.getInstance().getBikes().isEmpty()) {
             Tron.getInstance().stopGame();
         }
-        
         Clock.getInstance().stop(); //Pausiert das Spiel wenn ein Spieler stribt
-        //System.exit(0);  //Nur zum testen, kann wieder raus ;)
-        YouDied youDied = new YouDied("died"); //Fenster das aufgeht wenn ein spieler stirbt
-        
+        YouDied youDied = new YouDied("You died", name); //Fenster das aufgeht wenn ein spieler stirbt
     }
-
+    
+    
 }

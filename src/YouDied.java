@@ -24,9 +24,11 @@ import javax.swing.*;
 public class YouDied extends JFrame {
     private final JButton Ok = new JButton();
     private final JLabel TRON = new JLabel();
+    private final JLabel jLabelX = new JLabel();
     private BufferedImage image = null;
-
-    public YouDied(String title) {
+    
+    
+    public YouDied(String title, String name) {
         super(title);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         int frameWidth = 800;
@@ -44,12 +46,14 @@ public class YouDied extends JFrame {
             Logger.getLogger(Startpage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Container c = new Container() {
+       Container c = new Container() {
             public void paint(Graphics g) {
                 g.drawImage(image, 0, 0, null);
                 super.paint(g);
             }
         };
+        c.setBackground(new Color(0, 0, 0, 0));
+        this.setContentPane(c);
         
         Ok.setBounds(360, 352, 75, 25);
         Ok.setText("Ok");
@@ -61,17 +65,26 @@ public class YouDied extends JFrame {
         });
         this.add(Ok);
 
-        TRON.setBounds(40, 40,800, 104);
-        TRON.setText("You Died, Bitch!!!");
-        TRON.setFont(new Font("Consolas", Font.BOLD, 72));
+        TRON.setBounds(100, 40,800, 104);
+        TRON.setText("You Died, " + name + "!!!");
+        TRON.setFont(new Font("Consolas", Font.BOLD, 54));
         TRON.setForeground(Color.WHITE);
+        
         this.add(TRON);
-
+        
+        jLabelX.setBounds(250, 100,800, 104);
+        jLabelX.setText("#Looser");
+        jLabelX.setFont(new Font("Consolas", Font.BOLD, 72));
+        jLabelX.setForeground(Color.WHITE);
+        this.add(jLabelX);
+       
+        
         setVisible(true);
-    }
+    
+     }
 
 
     public static void main(String[] args) {
-        new YouDied("YouDied");
+        new YouDied("YouDied", "Torsten");
     }
 }
